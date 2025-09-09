@@ -1,0 +1,37 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
+<meta name="description" content="{{ page.description | default: site.description }}">
+<link rel="canonical" href="{{ site.url }}{{ page.url }}">
+<link rel="stylesheet" href="{{ "/assets/css/styles.css" | relative_url }}">
+<link rel="preconnect" href="https://unpkg.com">
+<link rel="preconnect" href="https://cdn.wompi.co">
+<link rel="icon" href="{{ "/assets/favicon.ico" | relative_url }}">
+<meta property="og:title" content="{{ page.title | default: site.title }}">
+<meta property="og:description" content="{{ page.description | default: site.description }}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ site.url }}{{ page.url }}">
+<meta property="og:image" content="{{ site.url }}/assets/og-default.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "{% if page.layout == 'product' %}Product{% else %}WebSite{% endif %}",
+  {% if page.layout == "product" %}
+  "name": "{{ page.nombre | escape }}",
+  "image": "{{ site.url }}/assets/img/productos/{{ page.imagen }}",
+  "description": "{{ page.description | default: site.description | escape }}",
+  "sku": "{{ page.id }}",
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "COP",
+    "price": "{{ page.precio }}",
+    "availability": "https://schema.org/InStock",
+    "url": "{{ site.url }}{{ page.url }}"
+  }
+  {% else %}
+  "name": "Quarzo",
+  "url": "{{ site.url }}",
+  "potentialAction": { "@type": "SearchAction", "target": "{{ site.url }}/search.html?q={search_term_string}", "query-input": "required name=search_term_string" }
+  {% endif %}
+}
+</script>

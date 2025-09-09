@@ -1,0 +1,44 @@
+---
+layout: default
+---
+
+<article class="product">
+  <div class="product__media">
+    <picture>
+      <source srcset="{{ "/assets/img/productos/" | append: page.imagen | relative_url }}" type="image/webp">
+      <img
+        src="{{ "/assets/img/productos/" | append: page.imagen | relative_url }}"
+        alt="{{ page.nombre }}"
+        width="900"
+        height="900"
+        loading="eager"
+        fetchpriority="high">
+    </picture>
+  </div>
+
+  <div class="product__info">
+    <h1>{{ page.nombre }}</h1>
+    <p class="price">$ {{ page.precio }}</p>
+
+    <label for="talla">Talla</label>
+    <select id="talla" class="tallas">
+      {% for t in page.tallas %}
+      <option value="{{ t }}">{{ t }}</option>
+      {% endfor %}
+    </select>
+
+    <p class="meta">Color: {{ page.color }}</p>
+
+    <div class="buy">
+      <button id="btn-wompi" class="btn-primary">Comprar</button>
+      <p class="help">Pago seguro con Wompi · COP</p>
+    </div>
+
+    <section class="details">
+      <h2>Descripción</h2>
+      <p>{{ page.description | default: "Calzado Quarzo con materiales de alta calidad." }}</p>
+    </section>
+  </div>
+</article>
+
+<script src="{{ "/assets/js/product.js" | relative_url }}" defer></script>

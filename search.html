@@ -1,0 +1,12 @@
+---
+layout: default
+title: Buscar
+description: "Busca productos Quarzo por nombre o color."
+---
+
+<h1>Buscar</h1>
+<input id="q" class="search-input" placeholder="Buscar calzado..." autocomplete="off">
+<ul id="res" class="search-results"></ul>
+
+<script src="https://unpkg.com/lunr/lunr.js"></script>
+<script src="{{ "/assets/js/search.js" | relative_url }}" defer></script>

@@ -1,0 +1,58 @@
+---
+layout: default
+title: Quarzo · Catálogo
+description: "Explora el catálogo de calzado Quarzo."
+---
+
+<h1>Catálogo</h1>
+
+<form id="filtros" class="filters">
+  <label>Talla
+    <select id="filtro-talla">
+      <option value="">Todas</option>
+      {% assign tallas = "" | split: "" %}
+      {% for p in site.products %}
+        {% for t in p.tallas %}
+          {% unless tallas contains t %}
+            {% assign tallas = tallas | push: t %}
+          {% endunless %}
+        {% endfor %}
+      {% endfor %}
+      {% assign tallas = tallas | sort %}
+      {% for t in tallas %}
+        <option value="{{ t }}">{{ t }}</option>
+      {% endfor %}
+    </select>
+  </label>
+
+  <label>Color
+    <select id="filtro-color">
+      <option value="">Todos</option>
+      {% assign colores = "" | split: "" %}
+      {% for p in site.products %}
+        {% unless colores contains p.color %}
+          {% assign colores = colores | push: p.color %}
+        {% endunless %}
+      {% endfor %}
+      {% assign colores = colores | sort %}
+      {% for c in colores %}
+        <option value="{{ c }}">{{ c }}</option>
+      {% endfor %}
+    </select>
+  </label>
+</form>
+
+<ul class="grid" id="grid">
+  {% for p in site.products %}
+  <li class="card" data-color="{{ p.color }}" data-tallas="{{ p.tallas | join: ',' }}">
+    <a href="{{ p.url | relative_url }}">
+      <img src="{{ "/assets/img/productos/" | append: p.imagen | relative_url }}"
+           alt="{{ p.nombre }}" width="600" height="600" loading="lazy">
+      <h2>{{ p.nombre }}</h2>
+      <p class="price">$ {{ p.precio }}</p>
+    </a>
+  </li>
+  {% endfor %}
+</ul>
+
+<script src="{{ "/assets/js/catalog.js" | relative_url }}" defer></script>

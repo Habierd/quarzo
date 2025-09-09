@@ -1,0 +1,29 @@
+[
+  {
+    "id": "QZ-001",
+    "nombre": "Zapatilla Urbana",
+    "precio": 159900,
+    "tallas": ["38","39","40","41","42"],
+    "color": "Negro",
+    "imagen": "qz-001.webp",
+    "slug": "zapatilla-urbana-negro"
+  },
+  {
+    "id": "QZ-002",
+    "nombre": "Tenis Running",
+    "precio": 189900,
+    "tallas": ["39","40","41","42","43"],
+    "color": "Blanco",
+    "imagen": "qz-002.webp",
+    "slug": "tenis-running-blanco"
+  },
+  {
+    "id": "QZ-003",
+    "nombre": "Bota Casual",
+    "precio": 209900,
+    "tallas": ["40","41","42","43"],
+    "color": "Café",
+    "imagen": "qz-003.webp",
+    "slug": "bota-casual-cafe"
+  }
+]
