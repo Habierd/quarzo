@@ -1,0 +1,17 @@
+---
+layout: null
+permalink: /assets/search.json
+---
+
+{
+  "docs": [
+    {% for p in site.products %}
+    {
+      "id": "{{ p.slug }}",
+      "url": "{{ p.url | relative_url }}",
+      "title": "{{ p.nombre | escape }}",
+      "color": "{{ p.color | escape }}"
+    }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ]
+}

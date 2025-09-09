@@ -1,0 +1,28 @@
+title: "Quarzo"
+description: "Tienda de calzado · Colombia"
+url: "" # Añadir el dominio cuando lo tengas, p.ej. https://quarzo.co
+baseurl: ""
+markdown: kramdown
+theme: null
+permalink: pretty
+
+collections:
+  products:
+    output: true
+    permalink: /productos/:slug/
+
+include:
+  - assets/search.json
+
+exclude:
+  - node_modules
+  - scripts
+  - README.md
+
+defaults:
+  - scope:
+      path: ""
+      type: "products"
+    values:
+      layout: product
+      sitemap: true
